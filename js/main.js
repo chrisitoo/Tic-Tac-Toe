@@ -31,8 +31,13 @@ const messages = document.querySelector('h2');
 function getWinner(){
     let winner = null;
     winningCombos.forEach(function(combo, index) {
-      if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) winner = board[combo[0]];
-      });
+      if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) { 
+        winner = board[combo[0]];
+    
+    }
+     });
+
+     return winner ? winner : board.includes('') ? null : 'T';
       return winner;
 };
 
@@ -67,7 +72,7 @@ function init() {
         squares[index].textContent = mark;
         });
 
-        messages.textContent = win ? `${win} wins the game!` : `It's ${turn}'s turn!`;
+        messages.textContent = win === 'T' ? `That's a tie, queen!` : win ? `${win} wins the game!` : `It's ${turn}'s turn!`;
         };
 
     
